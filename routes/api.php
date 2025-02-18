@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
-
     // Register route
     Route::post("register", [AuthController::class, "register"]);
     // Login route
