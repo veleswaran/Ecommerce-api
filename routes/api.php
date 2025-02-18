@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,5 @@ Route::middleware('auth:api')->group(function () {
     // Get all users route (only accessible by authenticated users)
     Route::get("users", [HomeController::class, "index"]);
 });
+
+Route::apiResource("category",CategoryController::class);
