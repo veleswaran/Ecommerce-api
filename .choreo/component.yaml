@@ -7,7 +7,7 @@ spec:
   type: web-app
   source:
     type: git
-    repository: https://github.com/your-username/your-laravel-repo.git
+    repository: https://github.com/veleswaran/Ecommerce-api.git
     branch: main
   build:
     command: |
