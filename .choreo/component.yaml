@@ -1,0 +1,41 @@
+apiVersion: choreo.dev/v1
+kind: Component
+metadata:
+  name: laravel-app
+  namespace: default
+spec:
+  type: web-app
+  source:
+    type: git
+    repository: https://github.com/your-username/your-laravel-repo.git
+    branch: main
+  build:
+    command: |
+      composer install --no-dev --optimize-autoloader
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+  run:
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    port: 8000
+  env:
+    - name: APP_ENV
+      value: production
+    - name: APP_KEY
+      value: your-app-key
+    - name: DB_CONNECTION
+      value: mysql
+    - name: DB_HOST
+      value: your-db-host
+    - name: DB_PORT
+      value: "3306"
+    - name: DB_DATABASE
+      value: your-db-name
+    - name: DB_USERNAME
+      value: your-db-username
+    - name: DB_PASSWORD
+      value: your-db-password
+  ingress:
+    enable: true
+    path: /
+    port: 8000
